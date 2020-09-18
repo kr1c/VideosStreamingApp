@@ -1,4 +1,4 @@
-
+﻿
 using Domain.DAL;
 using Domain.Services;
 using Domain.Services.Abstract;
@@ -31,6 +31,12 @@ namespace VideosServer.Extensions
                 Description = "Application for managing video data",
             });
 
+            return services;
+        }
+
+        public static IServiceCollection AddDomainServices(this IServiceCollection services)
+        {
+            services.AddScoped<IVideosService, VideosService>();
             return services;
         }
     }

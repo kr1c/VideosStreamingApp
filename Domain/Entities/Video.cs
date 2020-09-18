@@ -12,7 +12,7 @@ namespace Domain.Entities
         public string Description { get; set; }
         public short AgeGroup { get; set; }
         public DateTime AvailabilityFrom { get; set; }
-        public DateTime AvailabilityTo { get; set; }
+        public DateTime? AvailabilityTo { get; set; }
         public string Url { get; set; }
         public long? ParentVideoId { get; set; }
         public int VideoTypeId { get; set; }

@@ -93,6 +93,8 @@ namespace Domain.DAL
 
                 entity.HasOne(vc => vc.Video).WithMany(v => v.VideoCategories)
                     .HasForeignKey(vc => vc.VideoId);
+
+                entity.HasIndex(vc => new { vc.CategoryId, vc.VideoId });
             });
 
             modelBuilder.Entity<CastPerson>(entity =>
@@ -157,6 +159,29 @@ namespace Domain.DAL
             modelBuilder.Entity<VideoImageType>().HasData(
                  new VideoImageType() { Id = 1, Name = "FRAME" },
                  new VideoImageType() { Id = 2, Name = "COVER" }
+            );
+
+            modelBuilder.Entity<Video>().HasData(
+                 new Video() { Id = 1, Title = "The Shawshank Redemption", AgeGroup = 18, Description = "Skazani na Shawsank", AvailabilityFrom = new System.DateTime(1994, 12, 12), VideoTypeId = 1},
+                 new Video() { Id = 2, Title = "The Godfather", AgeGroup = 16, AvailabilityFrom = new System.DateTime(1972, 3, 4), VideoTypeId = 1 },
+                 new Video() { Id = 3, Title = "The Godfather: Part II", AgeGroup = 16, AvailabilityFrom = new System.DateTime(1974, 5, 6), VideoTypeId = 1 },
+                 new Video() { Id = 4, Title = "The Dark Knight", AgeGroup = 12, AvailabilityFrom = new System.DateTime(2008, 11, 11), VideoTypeId = 1 },
+                 new Video() { Id = 5, Title = "12 Angry Men", AgeGroup = 12, AvailabilityFrom = new System.DateTime(1957, 1, 1), VideoTypeId = 1 },
+                 new Video() { Id = 6, Title = "Schindler's List", AgeGroup = 12, AvailabilityFrom = new System.DateTime(1993, 7, 5), VideoTypeId = 1 },
+                 new Video() { Id = 7, Title = "The Lord of the Rings: The Return of the King", AgeGroup = 7, AvailabilityFrom = new System.DateTime(2003, 12, 21), VideoTypeId = 1 }
+            );
+
+            modelBuilder.Entity<VideoCategory>().HasData(
+                 new VideoCategory() { Id = 1, CategoryId = 1, VideoId = 1},
+                 new VideoCategory() { Id = 2, CategoryId = 1, VideoId = 2 },
+                 new VideoCategory() { Id = 3, CategoryId = 3, VideoId = 2 },
+                 new VideoCategory() { Id = 4, CategoryId = 1, VideoId = 3 },
+                 new VideoCategory() { Id = 5, CategoryId = 1, VideoId = 4 },
+                 new VideoCategory() { Id = 6, CategoryId = 4, VideoId = 4 },
+                 new VideoCategory() { Id = 7, CategoryId = 3, VideoId = 5 },
+                 new VideoCategory() { Id = 8, CategoryId = 1, VideoId = 6 },
+                 new VideoCategory() { Id = 9, CategoryId = 3, VideoId = 6 },
+                 new VideoCategory() { Id = 10, CategoryId = 4, VideoId = 7 }
             );
         }
 

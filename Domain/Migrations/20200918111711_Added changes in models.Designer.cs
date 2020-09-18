@@ -4,14 +4,16 @@ using Domain.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Domain.Migrations
 {
     [DbContext(typeof(VideoDbContext))]
-    partial class VideoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200918111711_Added changes in models")]
+    partial class Addedchangesinmodels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -343,73 +345,11 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("VideoId");
 
-                    b.HasIndex("CategoryId", "VideoId");
-
                     b.ToTable("VideoCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CategoryId = 1L,
-                            VideoId = 1L
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CategoryId = 1L,
-                            VideoId = 2L
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CategoryId = 3L,
-                            VideoId = 2L
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CategoryId = 1L,
-                            VideoId = 3L
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CategoryId = 1L,
-                            VideoId = 4L
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CategoryId = 4L,
-                            VideoId = 4L
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CategoryId = 3L,
-                            VideoId = 5L
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            CategoryId = 1L,
-                            VideoId = 6L
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            CategoryId = 3L,
-                            VideoId = 6L
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            CategoryId = 4L,
-                            VideoId = 7L
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.VideoImage", b =>

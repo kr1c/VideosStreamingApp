@@ -4,14 +4,16 @@ using Domain.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Domain.Migrations
 {
     [DbContext(typeof(VideoDbContext))]
-    partial class VideoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200918121317_Added data to video category")]
+    partial class Addeddatatovideocategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -343,9 +345,9 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VideoId");
+                    b.HasIndex("CategoryId");
 
-                    b.HasIndex("CategoryId", "VideoId");
+                    b.HasIndex("VideoId");
 
                     b.ToTable("VideoCategories");
 
