@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VideosServer.Extensions;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace VideosServer
 {
@@ -22,7 +23,10 @@ namespace VideosServer
 
             services.AddDatabase(Configuration);
             services.AddSwagger();
-            services.AddControllers();
+            services.AddDomainServices();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
