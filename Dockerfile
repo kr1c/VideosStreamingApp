@@ -7,16 +7,23 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["VideosServer/VideosServer.csproj", "VideosServer/"]
-RUN dotnet restore "VideosServer/VideosServer.csproj"
+COPY *.sln ./
+COPY VideosServer/*.csproj VideosServer/
+COPY Domain/*.csproj Domain/
+
+RUN dotnet restore
 COPY . .
-WORKDIR "/src/VideosServer"
-RUN dotnet build "VideosServer.csproj" -c Release -o /app/build
+
+WORKDIR /src/Domain
+RUN dotnet build -c Release -o /app
+
+WORKDIR /src/VideosServer
+RUN dotnet build -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "VideosServer.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "VideosServer.dll"]
