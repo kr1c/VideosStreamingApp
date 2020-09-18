@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideosServer", "VideosServer\VideosServer.csproj", "{031E7DA5-7A99-4A82-A176-45E56D2F4A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{520CEC95-2208-4E33-BB2D-B92D70D91DAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{031E7DA5-7A99-4A82-A176-45E56D2F4A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{031E7DA5-7A99-4A82-A176-45E56D2F4A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{031E7DA5-7A99-4A82-A176-45E56D2F4A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{031E7DA5-7A99-4A82-A176-45E56D2F4A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{520CEC95-2208-4E33-BB2D-B92D70D91DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520CEC95-2208-4E33-BB2D-B92D70D91DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520CEC95-2208-4E33-BB2D-B92D70D91DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520CEC95-2208-4E33-BB2D-B92D70D91DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {904CA7A7-010E-4EDE-9379-992096BB1355}
+	EndGlobalSection
+EndGlobal
