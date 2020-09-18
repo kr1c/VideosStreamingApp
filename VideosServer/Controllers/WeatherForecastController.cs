@@ -7,6 +7,10 @@ using Microsoft.Extensions.Logging;
 
 namespace VideosServer.Controllers
 {
+    /// <summary>
+    /// Get weathers
+    /// </summary>
+    /// <returns></returns>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
