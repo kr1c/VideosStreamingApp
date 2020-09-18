@@ -94,7 +94,7 @@ namespace Domain.DAL
                 entity.HasOne(vc => vc.Video).WithMany(v => v.VideoCategories)
                     .HasForeignKey(vc => vc.VideoId);
 
-                entity.HasIndex(vc => new { vc.CategoryId, vc.VideoId });
+                entity.HasIndex(vc => new { vc.CategoryId, vc.VideoId }).IsUnique();
             });
 
             modelBuilder.Entity<CastPerson>(entity =>
