@@ -65,9 +65,40 @@ namespace Domain.Services
             throw new System.NotImplementedException();
         }
 
-        public async Task<BusinessResult> DeleteCategoryVideo(long videoId, long videoImageId)
+        public async Task<BusinessResult> DeleteCategoryVideo(long videoId, long categoryId)
         {
-            throw new System.NotImplementedException();
+            var video = await _dbContext.Videos.FirstOrDefaultAsync(x => x.Id == videoId);
+            var videoCategory = await _dbContext.VideoCategories.FirstOrDefaultAsync(x => x.VideoId == videoId && x.CategoryId == categoryId);
+
+            // should be check if video belong to current user or smth
+            if (video == null || videoCategory == null )
+            {
+                return new BusinessResult()
+                {
+                    IsSuccessful = false,
+                    Message = "Missing video or category"
+                };
+            }
+
+            _dbContext.VideoCategories.Remove(videoCategory);
+            var result = await _dbContext.SaveChangesAsync();
+
+
+            if (result > 0)
+            {
+                return new BusinessResult()
+                {
+                    IsSuccessful = true
+                };
+            }
+            else
+            {
+                return new BusinessResult()
+                {
+                    IsSuccessful = false,
+                    Message = "Something went wrong..."
+                };
+            }
         }
 
         public async Task<BusinessResult> DeleteImageVideo(long videoId, long videoImageId)

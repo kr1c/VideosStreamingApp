@@ -14,7 +14,7 @@ namespace Domain.Services.Abstract
         Task<BusinessResult> GetVideo(long videoId);
         Task<BusinessResult> DeleteVideo(long videoId);
         Task<BusinessResult> AddCategoryToVideo(long videoId, VideoCategorySaveDto video);
-        Task<BusinessResult> DeleteCategoryVideo(long videoId, long videoImageId);
+        Task<BusinessResult> DeleteCategoryVideo(long videoId, long categoryId);
         Task<BusinessResult> AddImageToVideo(long videoId, VideoImageSaveDto video);
         Task<BusinessResult> DeleteImageVideo(long videoId, long videoImageId);
         Task<IList<Video>> GetFilteredVideos(VideoQueryOptions videoQueryOptions);
