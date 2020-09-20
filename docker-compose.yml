@@ -7,18 +7,21 @@ services:
         ports:
             - "8000:80"
         depends_on:
-            - sql-server-db
+            - db
         networks:
-        - backend             
-    sql-server-db:
-        container_name: sql-server-db
+        - backend
+    db:
+        container_name: sql-server-db-one
         image: "mcr.microsoft.com/mssql/server:latest"
+        restart: always
         ports:
-        - "1433:1433"
+            - "1433:1433"
         environment:
             SA_PASSWORD: "Test_123456"
             ACCEPT_EULA: "Y"
         networks:
         - backend
+        volumes:
+        - C:\docker-volumes\SQLServer:/var/opt/mssql/data 
 networks:
-  backend:
+  backend: 

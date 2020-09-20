@@ -1,5 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Domain.DAL
 {
@@ -23,6 +25,11 @@ namespace Domain.DAL
 
         public VideoDbContext(DbContextOptions<VideoDbContext> options) : base(options) {
             Options = options;
+
+            if (!Database.GetService<IRelationalDatabaseCreator>().Exists())
+            {
+                Database.Migrate();
+            }
         }
 
         #endregion
